@@ -1,18 +1,18 @@
-{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+{% extends "base.html" %} {% block title %}Check In{% endblock %} {% block content
 %}
-<form method="POST">
-  <div align="center" class="form-group">
-    <br><br><br>
-    <label for="checkInTime">Check in</label><br>
-    <input type="time" id="checkInTime">
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </div>
-</form>
-<script>
-  // Get the current time
-  var currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  <form method="POST">
+    <div align="center" class="form-group">
+      <br><br><br>
+      <label for="checkInTime">Check in</label><br>
+      <input type="time" name ="checkInTime" id="checkInTime">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+  <script>
+    // Get the current time
+    var currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-  // Set the current time as the default value of the input
-  document.getElementById('checkInTime').value = currentTime;
-</script>
+    // Set the current time as the default value of the input
+    document.getElementById('checkInTime').value = currentTime;
+  </script>
 {% endblock %}

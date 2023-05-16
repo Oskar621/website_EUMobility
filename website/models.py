@@ -4,16 +4,16 @@ from sqlalchemy.sql import func
 
 
 class Check_in(db.Model):
-    check_id = db.Column(db.Integer, primary_key = True)
+    check_id = db.Column(db.Integer, primary_key = True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    check_in = db.Column(db.DateTime)
-    date = db.Column(db.DateTime(timezone=True), default=func.now)
+    check_in = db.Column(db.Time)
+    date = db.Column(db.Date, default=func.now)
 
 class Check_out(db.Model):
-    check_id = db.Column(db.Integer, primary_key = True)
+    check_id = db.Column(db.Integer, primary_key = True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    check_out = db.Column(db.DateTime)
-    date = db.Column(db.DateTime(timezone=True), default=func.now)
+    check_out = db.Column(db.Time)
+    date = db.Column(db.Date, default=func.now)
     
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)

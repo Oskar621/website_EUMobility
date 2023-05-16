@@ -35,6 +35,7 @@ def login():
 @login_required
 def logout():
     logout_user()
+    flash('You have logged out', category="success")
     return redirect(url_for('auth.login'))
 
 
@@ -45,7 +46,6 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
         user = User.query.filter_by(login=login).first()
-
         if user:
             flash('Login already exists.', category='error')
         elif len(login) < 4:
@@ -61,5 +61,5 @@ def sign_up():
             db.session.commit()
             login_user(new_user, remember=True)
             flash('Account created!', category='success')
-            return redirect(url_for('views.home'))
+            return redirect(url_for('views.checkIn'))
     return render_template("sign_up.html", user=current_user)
