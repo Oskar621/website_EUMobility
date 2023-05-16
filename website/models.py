@@ -1,0 +1,24 @@
+from website import db
+from flask_login import UserMixin
+from sqlalchemy.sql import func
+
+
+class Check_in(db.Model):
+    check_id = db.Column(db.Integer, primary_key = True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    check_in = db.Column(db.DateTime)
+    date = db.Column(db.DateTime(timezone=True), default=func.now)
+
+class Check_out(db.Model):
+    check_id = db.Column(db.Integer, primary_key = True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    check_out = db.Column(db.DateTime)
+    date = db.Column(db.DateTime(timezone=True), default=func.now)
+    
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    login = db.Column(db.String(64), unique = True)
+    password  = db.Column(db.String(64), unique = True)
+    check_in = db.relationship('Check_in')
+    check_out = db.relationship('Check_out')
+
