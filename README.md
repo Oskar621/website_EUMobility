@@ -17,7 +17,7 @@ It’s an application where users can check-in to work and check-out of work. Ev
 ## Contributing
 
 ```
-report issues at: 'email to report issues'
+report issues at: 'o_swiderski@o2.pl'
 ```
 
 ## License
