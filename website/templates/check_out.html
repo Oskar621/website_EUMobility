@@ -1,12 +1,19 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
-    %}
-    <form method="POST">
-      <div align="center" class="form-group">
-        <br><br><br>
-        <label for="check_out">Check out</label><br>
-        <input type="time" name="check_out" id="check_out">
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </form>
-    {% endblock %}
+%}
+  <form method="POST">
+    <div align="center" class="form-group">
+      <br><br><br>
+      <label for="checkOutTime">Check out</label><br>
+      <input type="time" name="checkOutTime" id="checkOutTime">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+  <script>
+    // Get the current time
+    var currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  
+    // Set the current time as the default value of the input
+    document.getElementById('checkOutTime').value = currentTime;
+  </script>
+{% endblock %}
     
