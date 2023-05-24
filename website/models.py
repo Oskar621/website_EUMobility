@@ -19,6 +19,10 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     login = db.Column(db.String(64), unique = True)
     password  = db.Column(db.String(64), unique = True)
+    name = db.Column(db.String(64))
+    home_adress = db.Column(db.String(64))
+    phone_number = db.Column(db.String(15))
+    contract_hours = db.Column(db.Integer)
     check_in = db.relationship('Check_in')
     check_out = db.relationship('Check_out')
 

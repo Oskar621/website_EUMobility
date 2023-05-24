@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "eumobility-project",
+  "private_key_id": "1c333e3f452108e6489a313f13a21b4927eff94c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCjh8LxBlFv3YAd\n8YqOMSXeZuhx4ZQfacXF5XxVyFESkeGJUm0J5Ll4iXkJp7hxLBh7ECXRZsPVvHsK\n8Ah0I8xUDmRO7qyw0w8c45SzOfF1ZslDKu2rUxi978m3XLlMzdWTTYhORmWhK+Km\nCgWyX2wLyzp3qM+B4Kjb7fNbbugRNtCLdLTDpKW5W/ukHCGhNJzm2fB07NeC9s36\nQEM++D3RCFCl+1caEmQWFcKFmEWQX+xykIiUrDSXWkSMIoAjB1gzxiuA56VpFnf/\nvrsH1/SE5azS+th/cmhRpSlqdE+O/OY6kLgPjjl93qh3r5DrAlYJmjIJ7uaMuUpi\nmKwf9iRPAgMBAAECggEAD+uckdMZisH7Ai9GdXLMd7TEeXdkI8csGKJiv4YDR1yj\nb+qLfTr8YYNEunXOvsBAi+HCqy3AvNmFXK28rPRIcebkYuWlzO5nTY3/p1xpqPik\nrG2mYMqnIUqrp5z9cnNxkQGR1q9pn05cWbZzeO4FFB4PdAafv32yaS+zxJmG1Bhx\np7S2vmNS5hhgxe0aJky/dJySJvdi2fHg8XCSlGvux4oSCoA8NDbq+fiKUQObFukS\nSqiwsowY2xexTtVSGqc20zU2jW1wMYZjizNQ3+8Dj2akvfsfLQnb5EKSJeR0YHF2\nJUKabkYDJnzOHfayl5A2txkMVR5D5zDx02afLjVLQQKBgQDX7WHFWD/fMkuywjDn\noz0ovGAaSR1GGbO7ghzpB8qvw9Wyvh/Xgm0BBC+Fo5cEiRBIzhB7GUJcbJpWdEag\ntaxlGpPESRZIEn7IbJKdIB0jeP2HLwG4t0Bx0Eqe0cjwy5EjQsdyVGowRPeL0MIS\n0z72K4TwT+Hh3uiesRE6dQs1QQKBgQDB4QVynolP/3uzWqOyAFqkEB8qvfFueXJV\nh+4Zhk8cMbdUgkgd1mTx6wbsRcRf3ejCKtWdIHIW8+IF4aKDxB0UfQK2yASgJC+i\ngtf7mwrKf20fZG5VrGmJaaiCUgMGdKQTTF5eIIXqloZVdtTBEYw9273FLkTH9Ct2\nIoHGesEljwKBgAqYi4OzoO7C+RP8k4nKaOXm2JBxpg4alMdOyzxkNX4KjiIHUmiw\n7chu/CYCsRZ342SvN//SbX87lRdI/W5FfAA6HaY0L/O5dJ9BNLChMsza0xYfKGZ4\nF6F+JytEAChQ1P51+HOT0OItgDhMNjnWQ/CwkgV45gy/c4rWBZJoy/QBAoGAHzdT\n4TiVc0P3btFROf/EmFXgLsmWbesv9YWFWKa/ZhK7KegwJF24sxrcan5xN95K87hh\n3IK02+04nynNONoCtKHMJhHebMpmwQvAKsqz2hbaQwuwmCrCc1WHxDPgONHe+Rx6\ntT0XUsYZqvkPGGby5aLT00O331n5BXRY4NQy9RECgYBJY15InK7VUi70r/nGKd1x\n7DZ22MUaFbmoPFae0pFcHBoxITMfTPTUJBOmGGV5BvVX1J1P2LCzb9WEKF4Yh83A\nXWsMgaZe4M43oxPsXEwCbTknrt74X04RGPFQmdFzwLF5ndZFYk0bAoYUWMOHK3h7\nNf45FDKWNSEVCEWpoOwcpw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "eumobility-database@eumobility-project.iam.gserviceaccount.com",
+  "client_id": "118378930026078060142",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/eumobility-database%40eumobility-project.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
