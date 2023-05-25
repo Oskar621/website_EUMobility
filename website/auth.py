@@ -3,7 +3,7 @@ from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db   ##means from __init__.py import db
 from flask_login import login_user, login_required, logout_user, current_user
-
+import gspread
 
 auth = Blueprint('auth', __name__)
 
@@ -45,7 +45,15 @@ def sign_up():
         login = request.form.get('login')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
+        name = request.form.get('name')
+        home_address = request.form.get('home_address')
+        work_position = request.form.get('work_position')
+        work_email= request.form.get('work_email')
+        phone_number = request.form.get('phone_number')
+        contract_hours = request.form.get('contract_hours')
         user = User.query.filter_by(login=login).first()
+        
+        #checking user data        
         if user:
             flash('Login already exists.', category='error')
         elif len(login) < 4:
@@ -55,10 +63,36 @@ def sign_up():
         elif len(password1) < 7:
             flash('Password must be at least 7 characters.', category='error')
         else:
-            new_user = User(login=login, password=generate_password_hash(
-                password1, method='sha256'))
+            new_user = User(login=login,
+                            password=generate_password_hash(password1, method='sha256'),
+                            name = name,
+                            home_address = home_address,
+                            work_position = work_position,
+                            work_email = work_email,                            
+                            phone_number = phone_number,
+                            contract_hours = contract_hours
+                            )
             db.session.add(new_user)
             db.session.commit()
+
+            #inserting data to google sheets
+            scope = [
+                    'https://www.googleapis.com/auth/spreadsheets',
+                    'https://www.googleapis.com/auth/drive',
+                ]
+            client = gspread.service_account(filename='eumobility-project.json')
+            #sheet = client.create("User data")
+            #sheet.share('oskarswiderski621@gmail.com', perm_type='user', role='writer')
+            sheet = client.open('User data').sheet1
+            try: 
+                sheet.append_row([name, login, password1, home_address, work_position, work_email, phone_number, contract_hours])
+            except Exception as e:
+                    print(f"Exception occurred while inserting data: {str(e)}")
+                    flash('Failed to insert data', category='error')
+            
+
+
+            #login user
             login_user(new_user, remember=True)
             flash('Account created!', category='success')
             return redirect(url_for('views.checkIn'))

@@ -6,6 +6,7 @@ content %}
     <label for="login">Login</label>
     <input
       type="login"
+      autocomplete="off"
       class="form-control"
       id="login"
       name="login"
@@ -16,6 +17,7 @@ content %}
     <label for="password1">Password</label>
     <input
       type="password"
+      autocomplete="off"
       class="form-control"
       id="password1"
       name="password1"
@@ -26,6 +28,7 @@ content %}
     <label for="password2">Password (Confirm)</label>
     <input
       type="password"
+      autocomplete="off"
       class="form-control"
       id="password2"
       name="password2"
@@ -36,6 +39,7 @@ content %}
     <label for="name">Name</label>
     <input
       type="text"
+      autocomplete="off"
       class="form-control"
       id="name"
       name="name"
@@ -46,6 +50,7 @@ content %}
     <label for="home_address">Home Address</label>
     <input
       type="text"
+      autocomplete="off"
       class="form-control"
       id="home_address"
       name="home_address"
@@ -56,6 +61,7 @@ content %}
     <label for="work_position">Work Position</label>
     <input
       type="text"
+      autocomplete="off"
       class="form-control"
       id="work_position"
       name="work_position"
@@ -66,6 +72,7 @@ content %}
     <label for="work_email">Work Email</label>
     <input
       type="email"
+      autocomplete="off"
       class="form-control"
       id="work_email"
       name="work_email"
@@ -76,8 +83,8 @@ content %}
     <label for="phone_number">Phone number</label>
     <input
       type="tel"
+      autocomplete="off"
       class="form-control"
-      pattern="[0-9]{9}"
       id="phone_number"
       name="phone_number"
       placeholder="Enter your phone number"
@@ -87,10 +94,13 @@ content %}
     <label for="contract_hours">Contract hours</label>
     <input
       type="number"
+      autocomplete="off"
       class="form-control"
       id="contract_hours"
       name="contract_hours"
       placeholder="Enter your contract hours"
+      min="1"
+      max="24"
     />
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>

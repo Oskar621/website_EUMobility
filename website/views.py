@@ -22,10 +22,10 @@ def checkIn():
         else:
             flash('Invalid check-in time', category='error')
     return render_template("check_in.html", user=current_user)
-
 @views.route('/checkOut', methods=['GET','POST'])
 @login_required
 def checkOut():
+    time_difference_formatted = ''  # Declare the variable with a default value
     if request.method == "POST":
         check_out_time_str = request.form.get('checkOutTime')
         if check_out_time_str:
@@ -45,9 +45,9 @@ def checkOut():
                 # Calculate comfortable and uncomfortable hours
                 hours, remainder = divmod(time_difference.total_seconds(), 3600)
                 minutes, _ = divmod(remainder, 60)
+                comfortable_hours = hours
+                uncomfortable_hours = 0
                 if 0 <= hours <= 8:
-                    comfortable_hours = hours
-                    uncomfortable_hours = 0
                     time_difference_formatted = f"{int(hours)} comfortable hours, {int(minutes)} minutes"
                 elif hours > 9:
                     comfortable_hours = 8
@@ -62,10 +62,15 @@ def checkOut():
                 client = gspread.service_account(filename='eumobility-project.json')
                 sheet = client.open('Work time2').sheet1
                 login = current_user.login
+                contract_hours: int = current_user.contract_hours
+                hours = float(hours)  # Assuming hours is a string representation of a numeric value
+                contract_hours = float(contract_hours)
+                contract_hours_percentage = hours/contract_hours * 100
+                contract_hours_percentage_str = str(contract_hours_percentage) + "%"
                 check_out_date_str = check_out_date.strftime('%Y-%m-%d')  # Convert the date to a string in the format "YYYY-MM-DD"
                 flash(f'You have checked out. Time difference: {time_difference_formatted}', category='success')
                 try:
-                    sheet.append_row([login, check_out_date_str, check_in_time.strftime('%H:%M'), check_out_time.strftime('%H:%M'), comfortable_hours, uncomfortable_hours, minutes])
+                    sheet.append_row([login, check_out_date_str, check_in_time.strftime('%H:%M'), check_out_time.strftime('%H:%M'), comfortable_hours, uncomfortable_hours, minutes, contract_hours, contract_hours_percentage_str])
                 except Exception as e:
                     print(f"Exception occurred while inserting data: {str(e)}")
                     flash('Failed to insert data', category='error')
