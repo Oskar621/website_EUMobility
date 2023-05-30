@@ -1,0 +1,26 @@
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: pink;
+}
+
+header, footer {
+    height: 16%;
+    clear: both;
+}
+
+main {
+    height: 68%;
+    box-sizing: border-box;
+    background-color: blue;
+    clear: both;
+}
+
+footer {
+    background-color: red;
+    text-align: right;
+    }

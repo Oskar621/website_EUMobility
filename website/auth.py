@@ -20,8 +20,8 @@ def login():
         user = User.query.filter_by(login=login).first()
         if user:
             if check_password_hash(user.password, password):
-                flash('Logged in successfully!', category='success')
                 login_user(user, remember=True)
+                flash(f'Dear {current_user.name} welcome to EUMobility Sverige', category="success")
                 return redirect(url_for('views.checkIn'))
             else:
                 flash('Incorrect password, try again.', category='error')
@@ -75,14 +75,15 @@ def sign_up():
             db.session.add(new_user)
             db.session.commit()
 
-            #inserting data to google sheets
+            #inserting data to created google sheets
             scope = [
                     'https://www.googleapis.com/auth/spreadsheets',
                     'https://www.googleapis.com/auth/drive',
                 ]
             client = gspread.service_account(filename='eumobility-project.json')
-            #sheet = client.create("User data")
-            #sheet.share('oskarswiderski621@gmail.com', perm_type='user', role='writer')
+            sheet_name = str(name) + " work hours"
+            sheet = client.create(sheet_name)
+            sheet.share(work_email, perm_type='user', role='writer')
             sheet = client.open('User data').sheet1
             try: 
                 sheet.append_row([name, login, password1, home_address, work_position, work_email, phone_number, contract_hours])
@@ -90,8 +91,6 @@ def sign_up():
                     print(f"Exception occurred while inserting data: {str(e)}")
                     flash('Failed to insert data', category='error')
             
-
-
             #login user
             login_user(new_user, remember=True)
             flash('Account created!', category='success')

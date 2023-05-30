@@ -18,7 +18,7 @@ def checkIn():
             new_check = Check_in(user_id=current_user.id, check_in=check_in_time, date=check_in_date)
             db.session.add(new_check)
             db.session.commit()
-            flash('You have checked in', category='success')
+            flash('Bring it on, smile and do your best', category='success')
         else:
             flash('Invalid check-in time', category='error')
     return render_template("check_in.html", user=current_user)
@@ -60,7 +60,8 @@ def checkOut():
                     'https://www.googleapis.com/auth/drive',
                 ]
                 client = gspread.service_account(filename='eumobility-project.json')
-                sheet = client.open('Work time2').sheet1
+                sheet_name = str(current_user.name) + " work hours"
+                sheet = client.open(sheet_name).sheet1
                 login = current_user.login
                 contract_hours: int = current_user.contract_hours
                 hours = float(hours)  # Assuming hours is a string representation of a numeric value
@@ -68,7 +69,7 @@ def checkOut():
                 contract_hours_percentage = hours/contract_hours * 100
                 contract_hours_percentage_str = str(contract_hours_percentage) + "%"
                 check_out_date_str = check_out_date.strftime('%Y-%m-%d')  # Convert the date to a string in the format "YYYY-MM-DD"
-                flash(f'You have checked out. Time difference: {time_difference_formatted}', category='success')
+                flash(f'Thank you for your good work, {current_user.name}! Please have a nice time ahead', category='success')
                 try:
                     sheet.append_row([login, check_out_date_str, check_in_time.strftime('%H:%M'), check_out_time.strftime('%H:%M'), comfortable_hours, uncomfortable_hours, minutes, contract_hours, contract_hours_percentage_str])
                 except Exception as e:
@@ -78,4 +79,7 @@ def checkOut():
                 flash('No check-in time found for the user', category='error')
         else:
             flash('Invalid check-out time', category='error')
+
+    if request.method == "GET":
+        flash('Is it time to finish the work?', category="success")
     return render_template("check_out.html", user=current_user)
