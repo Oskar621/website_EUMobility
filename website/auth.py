@@ -42,7 +42,7 @@ def logout():
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
-        login = request.form.get('login')
+        login = request.form.get('login_form')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
         name = request.form.get('name')
@@ -76,17 +76,15 @@ def sign_up():
             db.session.commit()
 
             #inserting data to created google sheets
-            scope = [
-                    'https://www.googleapis.com/auth/spreadsheets',
-                    'https://www.googleapis.com/auth/drive',
-                ]
             client = gspread.service_account(filename='eumobility-project.json')
             sheet_name = str(name) + " work hours"
-            sheet = client.create(sheet_name)
-            sheet.share(work_email, perm_type='user', role='writer')
-            sheet = client.open('User data').sheet1
-            try: 
-                sheet.append_row([name, login, password1, home_address, work_position, work_email, phone_number, contract_hours])
+            try:
+                sheet = client.create(sheet_name)
+                sheet.share(work_email, perm_type='user', role='writer')
+                sheet = client.open(sheet_name).sheet1
+                sheet.append_row(["Login", "Date", "Check-in time", "Check-out time", "Comfortable hours worked", "Uncomfortable hours worked", "Minutes worked" ,"Contract Hours", "Contract hours worked in percentage"])
+                data_sheet = client.open('User data').sheet1
+                data_sheet.append_row([name, login, password1, home_address, work_position, work_email, phone_number, contract_hours])
             except Exception as e:
                     print(f"Exception occurred while inserting data: {str(e)}")
                     flash('Failed to insert data', category='error')

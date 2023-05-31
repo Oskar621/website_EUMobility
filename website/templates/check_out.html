@@ -4,6 +4,7 @@
     <div align="center" class="form-group">
       <br><br><br>
       <label for="checkOutTime">Check out</label><br>
+      <input type="date" name="checkOutDate" id="checkOutDate">
       <input type="time" name="checkOutTime" id="checkOutTime">
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
@@ -14,6 +15,20 @@
   
     // Set the current time as the default value of the input
     document.getElementById('checkOutTime').value = currentTime;
+
+    // Get the current date
+    var currentDate = new Date();
+
+    // Format the current date as YYYY-MM-DD
+    var year = currentDate.getFullYear();
+    var month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+    var day = currentDate.getDate().toString().padStart(2, '0');
+    var formattedDate = year + '-' + month + '-' + day;
+    
+    // Set the default value of the input field
+    document.getElementById('checkOutDate').value = formattedDate;
+    document.getElementById('checkOutDate').max = formattedDate;
+
   </script>
 {% endblock %}
     

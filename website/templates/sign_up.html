@@ -3,16 +3,16 @@ content %}
 <form method="POST">
   <h3 align="center">Sign Up</h3>
   <div class="form-group">
-    <label for="login">Login</label>
+    <label for="login_form">Login</label>
     <input
       type="login"
       autocomplete="off"
       class="form-control"
-      id="login"
-      name="login"
+      id="login_form"
+      name="login_form"
       placeholder="Enter login"
     />
-    <label for="login">Last 4 digits of your personal number</label>
+    <label for="login_form">Your employment number</label>
   </div>
   <div class="form-group">
     <label for="password1">Password</label>
@@ -101,9 +101,10 @@ content %}
       id="contract_hours"
       name="contract_hours"
       placeholder="Enter your contract hours"
-      min="1"
+      min="0"
       max="24"
     />
+    <label for="contract_hours">Full-time: 8 hours<bR>Half-time: 4 hours</label>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

@@ -4,10 +4,6 @@ body {
     padding: 0;
 }
 
-header{
-    background-color: pink;
-}
-
 header, footer {
     height: 16%;
     clear: both;
@@ -16,11 +12,18 @@ header, footer {
 main {
     height: 68%;
     box-sizing: border-box;
-    background-color: blue;
     clear: both;
 }
 
 footer {
-    background-color: red;
+    padding-right: 10px;
+    text-align: center;
+}
+
+#company{
+    float: left;
     text-align: right;
-    }
+}
+#creator{
+    
+}
