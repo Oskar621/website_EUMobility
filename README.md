@@ -11,7 +11,7 @@ pip install -r (path to requirements.txt)
 ## Description
 
 ```
-It’s an application where users can check-in to work and check-out of work. Every data is exported to a Excel file.
+It’s an application where users can check-in to work and check-out of work. Every data is exported to a personal Excel file.
 ```
 
 ## Contributing
